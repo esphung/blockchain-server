@@ -1,0 +1,18 @@
+{
+  "name": "blockchain-server",
+  "version": "1.0.0",
+  "description": "blockchain server",
+  "main": "index.ts",
+  "author": "eric phung",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node index.ts",
+    "clean": "rm -rf dist && rm -rf node_modules"
+  },
+  "packageManager": "yarn@4.5.1"
+}
