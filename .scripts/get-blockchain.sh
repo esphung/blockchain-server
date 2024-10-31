@@ -1,1 +1,1 @@
-curl -X GET http://localhost:3001/blocks
+curl -X GET http://localhost:3000/blocks

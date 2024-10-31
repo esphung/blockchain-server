@@ -29,14 +29,10 @@ export const isValidChain = (
 
 function broadcastLatest() {
   // Implementation for broadcasting the latest block to the network
-  console.debug("Broadcasting latest block...");
 }
 
 export const replaceChain = (newBlocks: (IBlock | IGenesisBlock)[]) => {
   if (isValidChain(newBlocks) && newBlocks.length > getBlockchain().length) {
-    console.debug(
-      "Received blockchain is valid. Replacing current blockchain with received blockchain"
-    );
     setBlockchain(newBlocks);
     broadcastLatest();
   } else {

@@ -18,6 +18,7 @@ const getSockets = () => {
 
 const connectToPeers = (newPeer: string) => {
   // TODO: Implement this function to connect to a new peer
+  console.debug("Connecting to peer:", newPeer);
 };
 
 const mineBlock = (data: string) => {
@@ -28,15 +29,12 @@ const mineBlock = (data: string) => {
   } = { success: false };
 
   const tempBlockChain = [...getBlockchain()]; // Get the current blockchain
-  console.debug("Mining a new block...");
 
   const newBlock: IBlock = generateNextBlock(data);
-  console.debug("New block generated:", newBlock);
 
   // Validate the new block
   const previousBlock = tempBlockChain[tempBlockChain.length - 1];
   const isValid = isValidNewBlock(newBlock, previousBlock);
-  console.debug("Is the new block valid?", isValid);
 
   // If the block is valid, add it to the blockchain
   if (!isValid) {
@@ -46,7 +44,6 @@ const mineBlock = (data: string) => {
 
   // Validate the block structure
   const isValidStructure = isValidBlockStructure(newBlock);
-  console.debug("Is the block structure valid?", isValidStructure);
 
   // If the block structure is valid, add the new block to the blockchain
   if (!isValidStructure) {
@@ -61,7 +58,6 @@ const mineBlock = (data: string) => {
 
   // Validate the entire blockchain
   const isValidChainBool = isValidChain(tempBlockChain);
-  console.debug("Is the blockchain valid?", isValidChainBool);
 
   if (!isValidChainBool) {
     result.error = new Error("Invalid blockchain detected.");
@@ -71,17 +67,12 @@ const mineBlock = (data: string) => {
   // replace the blockchain with a new one
   replaceChain(tempBlockChain); // Uncomment this line if you have a new blockchain to replace with
 
-  console.debug("New block added to the blockchain:", newBlock);
-
-  // TODO: Remove this line in production
-  console.debug("Blockchain:", getBlockchain());
-
   result.success = true;
   result.data = newBlock;
   return result;
 };
 
-const initHttpServer = (myHttpPort: number) => {
+const initHttpServer = (myHttpPort: string) => {
   const app = express();
 
   app.use(bodyParser.json());
@@ -113,7 +104,9 @@ const initHttpServer = (myHttpPort: number) => {
   });
 
   app.listen(myHttpPort, () => {
-    console.debug("Listening http on port: " + myHttpPort);
+    console.debug(
+      `Listening in ${process.env.NODE_ENV} mode on port ${myHttpPort}`
+    );
   });
 };
 
