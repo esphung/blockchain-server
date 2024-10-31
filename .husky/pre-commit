@@ -1,0 +1,2 @@
+yarn precommit
+git add .
