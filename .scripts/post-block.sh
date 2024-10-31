@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -d '{"data": "Hello I am a block!"}' http://localhost:3001/mineBlock

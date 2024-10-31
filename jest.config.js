@@ -10,4 +10,6 @@ module.exports = {
     "^.+\\.(ts|tsx)?$": "ts-jest",
     "^.+\\.(js|jsx)$": "babel-jest",
   },
+  moduleFileExtensions: ["ts", "js", "json", "node"],
+  setupFiles: ["<rootDir>/__mocks__/setup.ts"],
 };
