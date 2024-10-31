@@ -11,7 +11,7 @@
     "start": "npx tsc && node --env-file=.env dist/index.js",
     "clean": "rm -rf dist && rm -rf node_modules && rm -rf dist",
     "test": "npx jest",
-    "dev": "npx nodemon index.ts",
+    "dev": "npx nodemon --exec npx ts-node index.ts",
     "prepare": "npx husky",
     "precommit": "npx jest && npx tsc --noEmit && npx knip",
     "knip": "npx knip"
